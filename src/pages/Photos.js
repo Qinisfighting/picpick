@@ -4,6 +4,7 @@ import {Context} from "../Context"
 
 
 export default function Photos() {
+    
     const {allPhotos} = useContext(Context)
     
     function getClass(i) {
@@ -15,11 +16,9 @@ export default function Photos() {
         }
 
     }
-    
-
    
     const imageElements = allPhotos.map((img, i) => (
-        <Image key={img.id} img={img} className={getClass(i)} />
+        <Image key={img.id} img={img} className={getClass(i)} />  
     ))
 
   
