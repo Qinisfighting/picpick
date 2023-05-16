@@ -1,4 +1,4 @@
-# App Name
+## App Name
 PicPick
 ## Overview
 Order Picture Prints Online
@@ -12,6 +12,6 @@ Order Picture Prints Online
 ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
 ## Image attributions
 - [picsum](https://picsum.photos/)
-- [unsplash](hhttps://unsplash.com/)
+- [unsplash](https://unsplash.com/)
 ## Extras
 Adding new features, fixing bugs or any other questions, Please feel free to contact me: **Yanqin Q** (*yq.qualmann@gmail.com*)
