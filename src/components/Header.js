@@ -17,7 +17,7 @@ export default function Header() {
 
      const cartStyle = {
         float: 'right', 
-        marginRight:20,
+        marginRight:50,
         width:60,  
         paddingTop: 0, 
         filter: isHover ? 'brightness(80%)' : 'brightness(60%)'

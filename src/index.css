@@ -1,4 +1,5 @@
 html {
+  text-align: center;
   position: relative;
   min-height: 100%;
   font-family: 'Montserrat Alternates', sans-serif;
@@ -6,9 +7,10 @@ html {
 }
 
 body {
-  margin: 0;
+  margin: 0 0 40px;
   /* bottom = footer height */
-  padding:0;
+  padding: 0;
+  text-align: center;
 }
 
 footer {
