@@ -11,11 +11,19 @@ function ContextProvider({children}) {//  {children} is destructuring of props
             .then(res => res.json())
             .then(data => setAllPhotos(data))
     }, [])
-    
-    //console.log(allPhotos)
-    
+
+    function toggleFav(id) {
+        const updatedArr = allPhotos.map(photo => {
+         return id===photo.id?
+                {...photo,
+                isFavorite: !photo.isFavorite }
+                :photo
+        })
+        setAllPhotos(updatedArr)
+    }
+ 
     return (
-        <Context.Provider value={{allPhotos}}> {/* shorthand for allPhotos:allPhotos */}
+        <Context.Provider value={{allPhotos, toggleFav}}> {/* shorthand for allPhotos:allPhotos */}
             {children}
         </Context.Provider>
     )
