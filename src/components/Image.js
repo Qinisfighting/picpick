@@ -18,15 +18,18 @@ export default function Image({className, img}) {
 
  function starIcon() {
     if(img.isFavorite) {
-        return <img alt='star_fav' src={star_fav} style={starStyle} onClick={() => toggleFav(img.id)}></img>
-    }else /* if(hovered)*/  {
-        return <img alt='star_fav' src={star_outline} style={starStyle} onClick={() => toggleFav(img.id)}></img>
+        return <img alt='star_fav' src={star_fav} style={starStyle} onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave} onClick={() => toggleFav(img.id)}></img>
+    }else /* */if(hovered)  {
+        return <img alt='star_fav' src={star_outline} style={starStyle}  onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave} onClick={() => toggleFav(img.id)}></img>
     }
  }
 
  function cartIcon() {
     if(hovered) { 
-        return <img alt='add_to_cart' src={add_to_cart}  style={addToCartStyle}></img> 
+        return <img alt='add_to_cart' src={add_to_cart} onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave} style={addToCartStyle}></img> 
     } 
  }
 

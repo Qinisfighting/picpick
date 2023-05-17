@@ -4,6 +4,7 @@ const Context = React.createContext()
 
 function ContextProvider({children}) {//  {children} is destructuring of props
     const [allPhotos, setAllPhotos] = useState([])
+    
     //const url = "https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json"
     const url = "https://raw.githubusercontent.com/Qinisfighting/picpick/master/src/photosData.json"
     useEffect(() => {
@@ -19,6 +20,7 @@ function ContextProvider({children}) {//  {children} is destructuring of props
                 isFavorite: !photo.isFavorite }
                 :photo
         })
+        
         setAllPhotos(updatedArr)
     }
  
