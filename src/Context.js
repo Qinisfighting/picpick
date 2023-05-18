@@ -30,8 +30,7 @@ function ContextProvider({children}) {//  {children} is destructuring of props
 
         setAllPhotos(updatedArr)
         setLocalPhotos(updatedArr)
-        console.log(updatedArr)
-        console.log(localPhotos)
+       
     }
  
     return (
