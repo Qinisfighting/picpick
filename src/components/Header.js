@@ -1,12 +1,13 @@
 import headerPic from '../assets/headerPic.png'
-import {useState, useContext} from 'react'
+import {useState} from 'react'
 import cart from '../assets/cart.png'
+import reload from '../assets/reload.png'
 import {Link} from "react-router-dom"
-import {Context} from "../Context"
+
 
 
 export default function Header() {  
-    const {setPhotoRandom} = useContext(Context)
+   
     const [isHover, setIsHover] = useState(false); //set the shopping cart icon to hover
     const handleMouseEnter = () => {
         setIsHover(true);
@@ -26,7 +27,7 @@ export default function Header() {
 
      const randomBTN ={
         float: 'left', 
-        width:100,
+        width:140,
         height: 20,
         cursor: 'pointer',
         border: '1.5px ridge white',
@@ -36,11 +37,18 @@ export default function Header() {
         fontSize:'.8em',
         fontWeight:700,
         marginLeft:'1vw',
-        marginTop:'4.8vw',
-
-        
+        marginTop:'4.8vw',    
      }
 
+     const reloadStyle = {
+        float: 'left' ,
+        marginLeft:'.5vw',
+        marginTop:'4.8vw',
+        width:20,  
+        paddingTop: 0, 
+        cursor: 'pointer',
+     
+     }
     return (
         <header>
             <div className='head'>
@@ -49,7 +57,9 @@ export default function Header() {
                
             </div>
             <div>
-            <Link to='/random'><button style={randomBTN} onClick={() => setPhotoRandom()}>Random Me!</button></Link>
+             
+            <Link to='/random'><button style={randomBTN}>or just random me!</button></Link>
+              <img src={reload} alt='reload' style={reloadStyle} onClick={() => window.location.reload()} /> 
               <Link to='/cart'><img  style={cartStyle} src={cart} alt='cart' onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave} /></Link>
            </div>

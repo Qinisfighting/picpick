@@ -41,16 +41,15 @@ function ContextProvider({children}) {//  {children} is destructuring of props
     }
 
     function setPhotoRandom(id){
-        const updatedArr = allPhotoRandom.map(photo => {
-            return id===photo.id?
-                   {...photo,
-                   isFavorite: !photo.isFavorite }
-                   :photo
+        const updatedArr = allPhotoRandom.map(photo =>{
+            
+            return id === photo.id && photo
+                 
            })
            
    
            setAllPhotoRandom(updatedArr)
-           
+        
           
        }
    
