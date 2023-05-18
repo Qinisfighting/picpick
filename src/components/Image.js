@@ -20,7 +20,7 @@ export default function Image({className, img}) {
     if(img.isFavorite) {
         return <img alt='star_fav' src={star_fav} style={starStyle} onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave} onClick={() => toggleFav(img.id)}></img>
-    }else /* */if(hovered)  {
+    }else if(hovered)  {
         return <img alt='star_fav' src={star_outline} style={starStyle}  onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave} onClick={() => toggleFav(img.id)}></img>
     }
@@ -47,7 +47,7 @@ export default function Image({className, img}) {
  const starStyle ={
    
     position: 'absolute',
-    width:20,
+    width:25,
     zIndex: 2,
     top:15,
     left:15,
@@ -56,7 +56,7 @@ export default function Image({className, img}) {
 
  const addToCartStyle ={
     position: 'absolute',
-    width:20,
+    width:25,
     zIndex: 2,
     top:15,
     right:15,
@@ -69,8 +69,8 @@ export default function Image({className, img}) {
     return (
         <div className={`${className} image-container`}>
             {starIcon()}  
-            <img alt='img' src={img.url} style={imageStyle} className="image-grid" onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave} />
+            <a href={img.url}><img alt='img' src={img.url} style={imageStyle} className="image-grid" onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave} /></a>
             {cartIcon()}     
         </div>
     )
