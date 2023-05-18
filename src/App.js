@@ -3,6 +3,7 @@ import {Switch, Route} from "react-router-dom"
 import Header from './components/Header'
 import Cart from './pages/Cart'
 import Photos from './pages/Photos'
+import PhotosRamdon from './pages/PhotosRandom'
 
 
 
@@ -16,6 +17,9 @@ function App() {
                 </Route>
                 <Route  path='/cart'>
                     <Cart />
+                </Route>
+                <Route  path='/random'>
+                    <PhotosRamdon />
                 </Route>
         </Switch>
     </div>

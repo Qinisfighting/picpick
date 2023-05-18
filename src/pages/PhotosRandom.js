@@ -1,11 +1,11 @@
-import Image from "../components/Image"
+import ImageRandom from "../components/ImageRandom"
 import React, {useContext} from "react"
 import {Context} from "../Context"
 
 
-export default function Photos() {
+export default function PhotoRandom() {
 
-    const {localPhotos} = useContext(Context)
+    const {allPhotoRandom} = useContext(Context)
     
     function getClass(i) {
         if (i % 5 === 0) {
@@ -17,15 +17,14 @@ export default function Photos() {
 
     }
    
-    const imageElements = localPhotos.map((img, i) => (
-        <Image key={img.id} img={img} className={getClass(i)} />  
+    const imageElementsRandom = allPhotoRandom.map((img, i) => (
+        <ImageRandom key={img.id} img={img} className={getClass(i)} />  
     ))
 
- 
   
     return (
         <main className="photos">
-            {imageElements}
+            {imageElementsRandom}
         </main>
     )
 }

@@ -61,10 +61,10 @@ export default function Image({className, img}) {
     top:15,
     right:15,
     cursor: 'pointer',
- 
-
     
  }
+
+
 
     return (
         <div className={`${className} image-container`}>
