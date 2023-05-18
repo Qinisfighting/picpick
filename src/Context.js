@@ -4,36 +4,38 @@ const Context = React.createContext()
 
 function ContextProvider({children}) {//  {children} is destructuring of props
     const [allPhotos, setAllPhotos] = useState([])
-    //const [staredPhotos, setStaredPhotos] = useState(() => JSON.parse(localStorage.getItem("staredPhotos")) || [])
+    const [localPhotos, setLocalPhotos] = useState(() => JSON.parse(localStorage.getItem("localPhotos")) || []) 
     
-    //const url = "https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json"
-    const url = "https://raw.githubusercontent.com/Qinisfighting/picpick/master/src/photosDataRandom.json"
+    const url = "https://raw.githubusercontent.com/Qinisfighting/picpick/master/src/photosDataFixed.json"
+    //const url = "https://raw.githubusercontent.com/Qinisfighting/picpick/master/src/photosDataRandom.json"
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
             .then(data => setAllPhotos(data))
     }, [])
     
-   // useEffect(() => {
-       // localStorage.setItem("staredPhotos", JSON.stringify(staredPhotos))
- // }, [staredPhotos])
+   useEffect(() => {
+        localStorage.setItem("localPhotos", JSON.stringify(localPhotos))
+  }, [localPhotos])
 
 
     function toggleFav(id) {
-        const updatedArr = allPhotos.map(photo => {
+        const updatedArr = localPhotos.map(photo => {
          return id===photo.id?
                 {...photo,
                 isFavorite: !photo.isFavorite }
                 :photo
         })
         
+
         setAllPhotos(updatedArr)
-        //setStaredPhotos(prevPhotos => [...prevPhotos, updatedArr[id]])
-        //console.log(staredPhotos)
+        setLocalPhotos(updatedArr)
+        console.log(updatedArr)
+        console.log(localPhotos)
     }
  
     return (
-        <Context.Provider value={{allPhotos, toggleFav}}> {/* shorthand for allPhotos:allPhotos */}
+        <Context.Provider value={{allPhotos, toggleFav, localPhotos}}> {/* shorthand for allPhotos:allPhotos */}
             {children}
         </Context.Provider>
     )

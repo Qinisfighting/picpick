@@ -4,8 +4,8 @@ import {Context} from "../Context"
 
 
 export default function Photos() {
-    
-    const {allPhotos} = useContext(Context)
+
+    const {localPhotos} = useContext(Context)
     
     function getClass(i) {
         if (i % 5 === 0) {
@@ -17,7 +17,7 @@ export default function Photos() {
 
     }
    
-    const imageElements = allPhotos.map((img, i) => (
+    const imageElements = localPhotos.map((img, i) => (
         <Image key={img.id} img={img} className={getClass(i)} />  
     ))
 
