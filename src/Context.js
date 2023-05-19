@@ -6,6 +6,7 @@ function ContextProvider({children}) {//  {children} is destructuring of props
     const [allPhotos, setAllPhotos] = useState([])
     const [localPhotos, setLocalPhotos] = useState(() => JSON.parse(localStorage.getItem("localPhotos")) || []) 
     const [allPhotoRandom, setAllPhotoRandom] = useState([])
+    const [isRandom, setIsRandom] = useState(true)
     
     const url = "https://raw.githubusercontent.com/Qinisfighting/picpick/master/src/photosDataFixed.json"
     const urlRandom = "https://raw.githubusercontent.com/Qinisfighting/picpick/master/src/photosDataRandom.json"
@@ -49,13 +50,13 @@ function ContextProvider({children}) {//  {children} is destructuring of props
            
    
            setAllPhotoRandom(updatedArr)
-        
+           setIsRandom(false)
           
        }
-   
+
  
     return (
-        <Context.Provider value={{allPhotos, toggleFav, localPhotos,allPhotoRandom, setPhotoRandom}}> {/* shorthand for allPhotos:allPhotos */}
+        <Context.Provider value={{allPhotos, toggleFav, localPhotos,allPhotoRandom, setPhotoRandom, isRandom, setIsRandom}}> {/* shorthand for allPhotos:allPhotos */}
             {children}
         </Context.Provider>
     )
