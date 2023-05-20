@@ -1,5 +1,6 @@
 import React, {useState,useContext} from "react"
 import {Context} from "../Context"
+import PropTypes from 'prop-types';
 import star_fav from '../assets/star_fav.png'
 import star_outline from '../assets/star_outline.png'
 import add_to_cart from '../assets/add_to_cart.png'
@@ -7,7 +8,9 @@ import add_to_cart from '../assets/add_to_cart.png'
 export default function Image({className, img}) { 
    // const {className, img} = props  
    const [hovered, setHovered] = useState(false)
-    const {toggleFav} = useContext(Context)
+    const {toggleFav, addToCart} = useContext(Context)
+
+
 
    const handleMouseEnter = () => {
     setHovered(true);
@@ -29,7 +32,7 @@ export default function Image({className, img}) {
  function cartIcon() {
     if(hovered) { 
         return <img alt='add_to_cart' src={add_to_cart} onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave} style={addToCartStyle}></img> 
+        onMouseLeave={handleMouseLeave} onClick={() => addToCart(img)} style={addToCartStyle}></img> 
     } 
  }
 
@@ -76,3 +79,11 @@ export default function Image({className, img}) {
     )
 }
 
+Image.propTypes = {
+   className: PropTypes.string,
+   img: PropTypes.shape({
+       id: PropTypes.string.isRequired,
+       url: PropTypes.string.isRequired,
+       isFavorite: PropTypes.bool
+   })
+}

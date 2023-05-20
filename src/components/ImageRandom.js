@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import PropTypes from 'prop-types';
 
 
 
@@ -34,4 +35,14 @@ export default function ImageRamdon({className, img}) {
           
         </div>
     )
+}
+
+
+Image.propTypes = {
+   className: PropTypes.string,
+   img: PropTypes.shape({
+       id: PropTypes.string.isRequired,
+       url: PropTypes.string.isRequired,
+       isFavorite: PropTypes.bool
+   })
 }

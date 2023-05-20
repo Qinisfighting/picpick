@@ -30,7 +30,8 @@ export default function PhotoRandom() {
         color:'white', 
         fontSize:'.8em',
         fontWeight:700,  
-        margin: '10px 0 0 5px',    
+        margin: '10px 0 0 5px', 
+        paddingTop:3.8   
      }
 
     function getClass(i) {
