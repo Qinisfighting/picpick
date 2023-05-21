@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import star_fav from '../assets/star_fav.png'
 import star_outline from '../assets/star_outline.png'
 import add_to_cart from '../assets/add_to_cart.png'
+import remove_from_cart from '../assets/remove_from_cart.png'
 
 export default function Image({className, img}) { 
    // const {className, img} = props  
    const [hovered, setHovered] = useState(false)
-    const {toggleFav, addToCart} = useContext(Context)
+    const {toggleFav, addToCart, cartItems, removeFromCart} = useContext(Context)
 
 
 
@@ -30,9 +31,10 @@ export default function Image({className, img}) {
  }
 
  function cartIcon() {
+   const inCart = cartItems.some(item => item.id === img.id)
     if(hovered) { 
-        return <img alt='add_to_cart' src={add_to_cart} onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave} onClick={() => addToCart(img)} style={addToCartStyle}></img> 
+        return <img alt='add_to_cart' src={inCart? remove_from_cart:add_to_cart} onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave} onClick={() => inCart? removeFromCart(img.id): addToCart(img)} style={addToCartStyle}></img> 
     } 
  }
 
