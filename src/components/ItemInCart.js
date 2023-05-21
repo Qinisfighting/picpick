@@ -1,9 +1,10 @@
 import React, {useState,useContext} from "react"
 import {Context} from "../Context"
+import PropTypes from 'prop-types';
 import trash_bin from '../assets/trash_bin.png'
 
 
-export default function ItemInCart(img) {
+export default function ItemInCart({img}) {  //mean shit! forget {} for img and debugged for 2 hours...
     const [hovered, setHovered] = useState(false)
     const {removeFromCart} = useContext(Context)
 
@@ -56,10 +57,17 @@ export default function ItemInCart(img) {
   return (
     <div style = {itemStyle} onMouseEnter={handleMouseEnter}
     onMouseLeave={handleMouseLeave} >
-       <img alt='img' src={img.url} style={imageStyle} className="image-grid" />
+       <img alt='img' src={img.url} style={imageStyle}/>
        <h4 style={priceStyle}>1.99 €</h4>
        <img src={trash_bin} alt='trash_bin' style={trashBinStyle} onClick={() => removeFromCart(img.id)}></img>
    </div>  
   )
 
+}
+
+ItemInCart.propTypes = { 
+   img: PropTypes.shape({
+       id: PropTypes.string.isRequired,
+       url: PropTypes.string.isRequired,
+   })
 }
