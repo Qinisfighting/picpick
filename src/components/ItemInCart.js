@@ -3,7 +3,7 @@ import {Context} from "../Context"
 import trash_bin from '../assets/trash_bin.png'
 
 
-export default function ItemInCart(img,url) {
+export default function ItemInCart(img) {
     const [hovered, setHovered] = useState(false)
     const {removeFromCart} = useContext(Context)
 
@@ -58,7 +58,7 @@ export default function ItemInCart(img,url) {
     onMouseLeave={handleMouseLeave} >
        <img alt='img' src={img.url} style={imageStyle} className="image-grid" />
        <h4 style={priceStyle}>1.99 €</h4>
-       <img src={trash_bin} alt='trash_bin' style={trashBinStyle} onClick={()=>removeFromCart(img.id)} />  {/**/}
+       <img src={trash_bin} alt='trash_bin' style={trashBinStyle} onClick={() => removeFromCart(img.id)}></img>
    </div>  
   )
 

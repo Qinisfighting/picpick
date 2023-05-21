@@ -1,28 +1,28 @@
 html {
-  position: relative;
   min-height: 100%;
   font-family: 'Montserrat Alternates', sans-serif;
-  
+  position: relative;
 }
+  
+
 
 body {
+  
   margin: 0 0 40px;
-  /* bottom = footer height */
   padding: 0;
 }
 
 footer {
   background-image: linear-gradient(rgba(70, 69, 69, 0.911),rgba(0, 0, 0, 0.938));
-  position: absolute;
   left: 0;
   bottom: 0;
   height: 30px;
   width: 100%;
-  margin:auto;
   text-align: center;
   padding-top: 8px;
   color: white;
   font-size: .8em;
+  position: absolute;
  
 }
 
