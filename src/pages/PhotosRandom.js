@@ -16,9 +16,7 @@ export default function PhotoRandom() {
      
      }
     
-     const randomBTN ={
-        
-        
+     const randomBTN ={   
         width:70,
         height: 25,
         cursor: 'pointer',
