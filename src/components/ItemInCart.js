@@ -58,7 +58,7 @@ export default function ItemInCart({img}) {  //mean shit! forget {} for img and 
     <div style = {itemStyle} onMouseEnter={handleMouseEnter}
     onMouseLeave={handleMouseLeave} >
        <img alt='img' src={img.url} style={imageStyle}/>
-       <h4 style={priceStyle}>1.99 €</h4>
+       <h4 style={priceStyle}>1,99 €</h4>
        <img src={trash_bin} alt='trash_bin' style={trashBinStyle} onClick={() => removeFromCart(img.id)}></img>
    </div>  
   )

@@ -50,7 +50,7 @@ export default function Cart(img) {
     return (
         <main className="cart-page" style={cartElementsStyle}>   
             {cartElements}
-            <h2 style={summerStyle}>Summe ({cartItems.length}): {cartItems.length*1.99} €</h2>
+            <h2 style={summerStyle}>Summe({cartItems.length}): {(cartItems.length*1.99).toLocaleString("de-DE", {style: "currency", currency: "EUR"})}</h2>
             <button style={buttonStyle}>Place Order</button>
         </main>
     )
