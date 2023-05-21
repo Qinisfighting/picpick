@@ -62,7 +62,11 @@ function ContextProvider({children}) {//  {children} is destructuring of props
         setCartItems(prevItems => prevItems.filter(item => item.id !== id))
     }
 
-      
+     // function clearCart() {
+      //  localStorage.clear()
+     // }
+
+
     return (
         <Context.Provider value={{allPhotos,
                                   toggleFav, 

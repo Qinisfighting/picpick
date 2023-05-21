@@ -28,8 +28,8 @@ export default function Cart(img) {
         color:'#403f3f',
         position:'absolute',
         right: '8vw',
-        bottom: '0',
-        paddingTop: '50px 0',
+        bottom: -50,
+        paddingTop: '100px 0',
        
 
 
