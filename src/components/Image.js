@@ -52,7 +52,7 @@ export default function Image({className, img}) {
  const starStyle ={
    
     position: 'absolute',
-    width:25,
+    width:30,
     zIndex: 2,
     top:15,
     left:15,
@@ -61,7 +61,7 @@ export default function Image({className, img}) {
 
  const addToCartStyle ={
     position: 'absolute',
-    width:25,
+    width:30,
     zIndex: 2,
     top:15,
     right:15,

@@ -9,17 +9,16 @@ export default function PhotoRandom() {
     const {setPhotoRandom, allPhotoRandom} = useContext(Context)
 
     const reloadStyle = {
-        alignSelf:'flex-end',
-        marginLeft:'1vw',  
-        width:25,  
-        padding: 0, 
+        float: 'right',
+        margin:'10px 0 0 1vw ',  
+        width:23,  
         cursor: 'pointer',
      
      }
     
      const randomBTN ={
-       
-        alignSelf:'center',
+        
+        
         width:70,
         height: 25,
         cursor: 'pointer',
@@ -30,7 +29,7 @@ export default function PhotoRandom() {
         color:'white', 
         fontSize:'.8em',
         fontWeight:700,  
-        margin: '10px 0 0 5px', 
+        margin: '8px 0 0 1vw', 
         paddingTop:3.8   
      }
 
@@ -58,7 +57,7 @@ export default function PhotoRandom() {
   
     return (
         <>
-        <div style={{display:'flex', alignItems: 'center', marginLeft:'45vw', padding:'10px 0'}}>
+        <div style={{ float: 'left', padding:'5px 0', marginLeft:'22vw'}}>
           <Link to='/'><button onClick={() => setPhotoRandom()} style={randomBTN}>ORDER</button></Link>
           <img className="reload" src={reload} alt='reload' style={reloadStyle} onClick={() => reloadClick()} /> 
         </div>
