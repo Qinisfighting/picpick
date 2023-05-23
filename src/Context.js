@@ -4,23 +4,18 @@ const Context = React.createContext()
 
 function ContextProvider({children}) {//  {children} is destructuring of props
     const [allPhotos, setAllPhotos] = useState([])
-    const [localPhotos, setLocalPhotos] = useState(() => JSON.parse(localStorage.getItem("localPhotos")) || []) 
+    ///const [localPhotos, setLocalPhotos] = useState(() => JSON.parse(localStorage.getItem("localPhotos")) || []) 
     const [allPhotoRandom, setAllPhotoRandom] = useState([])
     const [isRandom, setIsRandom] = useState(true)
     const [cartItems, setCartItems] = useState(() => JSON.parse(localStorage.getItem("cartItems")) || [])
-  //  const [islocal, setIsLocal] = useState([])
+    const [buttonText, setButtonText] = useState("Place Order")
     
     const url = "https://raw.githubusercontent.com/Qinisfighting/picpick/master/src/photosDataFixed.json"
     const urlRandom = "https://raw.githubusercontent.com/Qinisfighting/picpick/master/src/photosDataRandom.json"
     useEffect(() => {
         fetch(url)  //
             .then(res => res.json())
-            .then(data => setAllPhotos(data))
-           
-         
-         //   .then(localStorage.setItem("localPhotos", JSON.stringify(allPhotos)))
-        
-           
+            .then(data => setAllPhotos(data))     
     }, [])
 
     useEffect(() => {
@@ -29,29 +24,25 @@ function ContextProvider({children}) {//  {children} is destructuring of props
             .then(data =>setAllPhotoRandom(data))
     }, [allPhotoRandom])
     
-  useEffect(() => {
-      localStorage.setItem("localPhotos", JSON.stringify(allPhotos))
-    
- }, [allPhotos, localPhotos])
-
-
-
+ 
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems))
 }, [cartItems])
 
+useEffect(() => {
+    localStorage.setItem("localPhotos", JSON.stringify(allPhotos))  
+}, [allPhotos])
 
     function toggleFav(id) {
-        const updatedArr = localPhotos.map(photo => {
+        const updatedArr = allPhotos.map(photo => {
          return id===photo.id?
                 {...photo,
                 isFavorite: !photo.isFavorite }
                 :photo
         })
-       
-        setAllPhotos(updatedArr)     
-        setLocalPhotos(updatedArr)   
-     
+          
+        setAllPhotos(updatedArr)   
+        
     }
 
     function setPhotoRandom(id){
@@ -72,22 +63,32 @@ function ContextProvider({children}) {//  {children} is destructuring of props
         setCartItems(prevItems => prevItems.filter(item => item.id !== id))
     }
 
-     // function clearCart() {
-      //  localStorage.clear()
-     // }
+    function placeOrder() {
 
+        setButtonText('Ordering...')
+        setTimeout(() => { 
+        localStorage.removeItem("cartItems")
+        window.location.reload(true)   
+        alert('Your order is successful!')
+        setButtonText('Place Order')
+    },3000)
+      }
+  
 
     return (
         <Context.Provider value={{allPhotos,
                                   toggleFav, 
-                                  localPhotos,
                                   allPhotoRandom, 
                                   setPhotoRandom, 
                                   isRandom, 
                                   setIsRandom, 
                                   addToCart, 
                                   cartItems,
-                                  removeFromCart}}> {/* shorthand for allPhotos:allPhotos */}
+                                  removeFromCart,
+                                  placeOrder,
+                                  buttonText,
+                                  setButtonText
+                                  }}> {/* shorthand for allPhotos:allPhotos */}
             {children}
         </Context.Provider>
     )

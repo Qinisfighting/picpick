@@ -7,11 +7,17 @@ import {Context} from "../Context"
 
 
 export default function Cart(img) {
-    const {cartItems} = useContext(Context)
+    
+    const {cartItems, placeOrder, buttonText} = useContext(Context)
     
     const cartElements = cartItems.map(img => (
         <ItemInCart key={img.id} img={img} url={img.url} className='itemInCart' />  
     ))
+
+       
+
+  
+
      const cartElementsStyle ={
       display: 'flex',
       flexDirection:'column',
@@ -51,7 +57,7 @@ export default function Cart(img) {
         <main className="cart-page" style={cartElementsStyle}>   
             {cartElements}
             <h2 style={summerStyle}>Summe({cartItems.length}): {(cartItems.length*1.99).toLocaleString("de-DE", {style: "currency", currency: "EUR"})}</h2>
-            <button style={buttonStyle}>Place Order</button>
+            <button style={buttonStyle}  onClick={() => {placeOrder()}}>{buttonText}</button>
         </main>
     )
 }

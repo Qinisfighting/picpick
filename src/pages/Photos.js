@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 
 export default function Photos() {
 
-    const {localPhotos, setPhotoRandom} = useContext(Context)
+    const {allPhotos, setPhotoRandom} = useContext(Context)
     
     function getClass(i) {
         if (i % 5 === 0) {
@@ -18,10 +18,8 @@ export default function Photos() {
     }
     
    
-     
 
-    const imageElements = localPhotos.map((img, i) => (
-        
+    const imageElements = allPhotos.map((img, i) => (   
         <Image key={img.id} img={img} className={getClass(i)} />  
     ))
 
