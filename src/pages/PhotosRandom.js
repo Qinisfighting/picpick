@@ -25,7 +25,7 @@ export default function PhotoRandom() {
         borderRadius: 50, 
         backgroundColor:'rgba(118, 100, 134, 0.842)', 
         color:'white', 
-        fontSize:'.8em',
+        fontSize:'1em',
         fontWeight:700,  
         margin: '8px 0 0 1vw', 
         paddingTop:3.8   
@@ -56,7 +56,7 @@ export default function PhotoRandom() {
     return (
         <>
         <div style={{ float: 'left', padding:'5px 0', marginLeft:'22vw'}}>
-          <Link to='/'><button onClick={() => setPhotoRandom()} style={randomBTN}>ORDER</button></Link>
+          <Link to='/'><button onClick={() => setPhotoRandom()} style={randomBTN}>Order</button></Link>
           <img className="reload" src={reload} alt='reload' style={reloadStyle} onClick={() => reloadClick()} /> 
         </div>
         <main className="photos">        

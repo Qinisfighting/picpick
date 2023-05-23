@@ -16,8 +16,12 @@ export default function Photos() {
         }
 
     }
+    
    
+     
+
     const imageElements = localPhotos.map((img, i) => (
+        
         <Image key={img.id} img={img} className={getClass(i)} />  
     ))
 

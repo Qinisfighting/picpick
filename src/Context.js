@@ -8,7 +8,7 @@ function ContextProvider({children}) {//  {children} is destructuring of props
     const [allPhotoRandom, setAllPhotoRandom] = useState([])
     const [isRandom, setIsRandom] = useState(true)
     const [cartItems, setCartItems] = useState(() => JSON.parse(localStorage.getItem("cartItems")) || [])
-    //const [isInCart, setIsInCart] = useState(false)
+  //  const [islocal, setIsLocal] = useState([])
     
     const url = "https://raw.githubusercontent.com/Qinisfighting/picpick/master/src/photosDataFixed.json"
     const urlRandom = "https://raw.githubusercontent.com/Qinisfighting/picpick/master/src/photosDataRandom.json"
@@ -16,6 +16,11 @@ function ContextProvider({children}) {//  {children} is destructuring of props
         fetch(url)  //
             .then(res => res.json())
             .then(data => setAllPhotos(data))
+           
+         
+         //   .then(localStorage.setItem("localPhotos", JSON.stringify(allPhotos)))
+        
+           
     }, [])
 
     useEffect(() => {
@@ -24,9 +29,12 @@ function ContextProvider({children}) {//  {children} is destructuring of props
             .then(data =>setAllPhotoRandom(data))
     }, [allPhotoRandom])
     
-   useEffect(() => {
-        localStorage.setItem("localPhotos", JSON.stringify(localPhotos))
-  }, [localPhotos])
+  useEffect(() => {
+      localStorage.setItem("localPhotos", JSON.stringify(allPhotos))
+    
+ }, [allPhotos, localPhotos])
+
+
 
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems))
@@ -40,8 +48,10 @@ function ContextProvider({children}) {//  {children} is destructuring of props
                 isFavorite: !photo.isFavorite }
                 :photo
         })
-        setAllPhotos(updatedArr)
-        setLocalPhotos(updatedArr)     
+       
+        setAllPhotos(updatedArr)     
+        setLocalPhotos(updatedArr)   
+     
     }
 
     function setPhotoRandom(id){
