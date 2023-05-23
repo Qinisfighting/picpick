@@ -2,6 +2,7 @@ import React, {useState,useContext} from "react"
 import {Context} from "../Context"
 import PropTypes from 'prop-types';
 import trash_bin from '../assets/trash_bin.png'
+//import useHover from '../hooks'
 
 
 export default function ItemInCart({img}) {  //mean shit! forget {} for img and debugged for 2 hours...

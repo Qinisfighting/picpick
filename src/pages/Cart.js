@@ -8,15 +8,12 @@ import {Context} from "../Context"
 
 export default function Cart(img) {
     
-    const {cartItems, placeOrder, buttonText} = useContext(Context)
+    const {cartItems, placeOrder, buttonText, isCartEmpty} = useContext(Context)
     
     const cartElements = cartItems.map(img => (
         <ItemInCart key={img.id} img={img} url={img.url} className='itemInCart' />  
     ))
 
-       
-
-  
 
      const cartElementsStyle ={
       display: 'flex',
@@ -36,6 +33,7 @@ export default function Cart(img) {
      }
 
     const buttonStyle = {
+        display: isCartEmpty && 'none',
         position:'absolute',
         width:110,
         height: 35,
@@ -51,12 +49,17 @@ export default function Cart(img) {
         right: '8vw',
        
      }
-
+     
+     const totalCost = cartItems.length*1.99
+     const totalCostDisplay = totalCost.toLocaleString("de-DE", {style: "currency", currency: "EUR"})
+     const ItemsNumber = cartItems.length
      
     return (
         <main className="cart-page" style={cartElementsStyle}>   
             {cartElements}
-            <h2 style={summerStyle}>Summe({cartItems.length}): {(cartItems.length*1.99).toLocaleString("de-DE", {style: "currency", currency: "EUR"})}</h2>
+            {!isCartEmpty ? 
+            <h2 style={summerStyle}>Total({ItemsNumber}):  {totalCostDisplay}</h2>
+            : <h2>You have no items in your cart. </h2> }
             <button style={buttonStyle}  onClick={() => {placeOrder()}}>{buttonText}</button>
         </main>
     )

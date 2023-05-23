@@ -9,6 +9,7 @@ function ContextProvider({children}) {//  {children} is destructuring of props
     const [isRandom, setIsRandom] = useState(true)
     const [cartItems, setCartItems] = useState(() => JSON.parse(localStorage.getItem("cartItems")) || [])
     const [buttonText, setButtonText] = useState("Place Order")
+    const [isCartEmpty, setIsCartEmpty] = useState(true)
     
     const url = "https://raw.githubusercontent.com/Qinisfighting/picpick/master/src/photosDataFixed.json"
     const urlRandom = "https://raw.githubusercontent.com/Qinisfighting/picpick/master/src/photosDataRandom.json"
@@ -56,7 +57,7 @@ useEffect(() => {
 
        function addToCart(newItem) {
         setCartItems(prevItems => [...prevItems, newItem])
-       
+        setIsCartEmpty(false)
     }
 
     function removeFromCart(id) {
@@ -71,6 +72,8 @@ useEffect(() => {
         window.location.reload(true)   
         alert('Your order is successful!')
         setButtonText('Place Order')
+        setIsCartEmpty(true)
+
     },3000)
       }
   
@@ -87,7 +90,8 @@ useEffect(() => {
                                   removeFromCart,
                                   placeOrder,
                                   buttonText,
-                                  setButtonText
+                                  setButtonText,
+                                  isCartEmpty
                                   }}> {/* shorthand for allPhotos:allPhotos */}
             {children}
         </Context.Provider>
