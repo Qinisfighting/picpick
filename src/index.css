@@ -1,29 +1,26 @@
 html {
-  min-height: 100%;
-  font-family: 'Montserrat Alternates', sans-serif;
-  position: relative;
+	min-height: 100%;
+	font-family: "Montserrat Alternates", sans-serif;
+	position: relative;
 }
-  
-
 
 body {
-  
-  margin: 0 0 40px;
-  padding: 0;
+	margin: 0 0 40px;
+	padding: 0;
 }
 
 footer {
-  background-image: linear-gradient(rgba(70, 69, 69, 0.911),rgba(0, 0, 0, 0.938));
-  left: 0;
-  bottom: 0;
-  height: 30px;
-  width: 100%;
-  text-align: center;
-  padding-top: 8px;
-  color: white;
-  font-size: .8em;
-  position: absolute;
- 
+	background-image: linear-gradient(
+		rgba(70, 69, 69, 0.911),
+		rgba(0, 0, 0, 0.938)
+	);
+	left: 0;
+	bottom: 0;
+	height: 30px;
+	width: 100%;
+	text-align: center;
+	padding-top: 8px;
+	color: white;
+	font-size: 0.8em;
+	position: absolute;
 }
-
-

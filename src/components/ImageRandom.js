@@ -1,48 +1,48 @@
-import React, {useState} from "react"
-import PropTypes from 'prop-types';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 
+export default function ImageRamdon({ className, img }) {
+	const [hovered, setHovered] = useState(false);
+	//const {allPhotoRamdon} = useContext(Context)
 
+	const handleMouseEnter = () => {
+		setHovered(true);
+	};
+	const handleMouseLeave = () => {
+		setHovered(false);
+	};
 
-export default function ImageRamdon({className, img}) { 
+	const imageStyle = {
+		filter: hovered ? "brightness(70%)" : "brightness(100%)",
+		width: "100%",
+		height: "100%",
+		objectFit: "cover",
+		borderRadius: 3,
+		boxShadow: "1px 1px 2px rgba(0, 0, 0, 0.644)",
+		zIndex: 1
+	};
 
-   const [hovered, setHovered] = useState(false)
-   //const {allPhotoRamdon} = useContext(Context)
-
-
-   const handleMouseEnter = () => {
-    setHovered(true);
- };
- const handleMouseLeave = () => {
-    setHovered(false);
- };
-
- const imageStyle = {
-    filter: hovered ? 'brightness(70%)' : 'brightness(100%)',
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-    borderRadius: 3,
-    boxShadow: '1px 1px 2px rgba(0, 0, 0, 0.644)',
-    zIndex: 1,
-
- }
-
-    return (
-        <div className={`${className} image-container`}>
-         
-            <a href={img.url}><img alt='img' src={img.url} style={imageStyle} className="image-grid" onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave} /></a>
-          
-        </div>
-    )
+	return (
+		<div className={`${className} image-container`}>
+			<a href={img.url}>
+				<img
+					alt="img"
+					src={img.url}
+					style={imageStyle}
+					className="image-grid"
+					onMouseEnter={handleMouseEnter}
+					onMouseLeave={handleMouseLeave}
+				/>
+			</a>
+		</div>
+	);
 }
-
 
 Image.propTypes = {
-   className: PropTypes.string,
-   img: PropTypes.shape({
-       id: PropTypes.string.isRequired,
-       url: PropTypes.string.isRequired,
-       isFavorite: PropTypes.bool
-   })
-}
+	className: PropTypes.string,
+	img: PropTypes.shape({
+		id: PropTypes.string.isRequired,
+		url: PropTypes.string.isRequired,
+		isFavorite: PropTypes.bool
+	})
+};

@@ -1,102 +1,97 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from "react";
 
-const Context = React.createContext()
+const Context = React.createContext();
 
-function ContextProvider({children}) {//  {children} is destructuring of props
-    const [allPhotos, setAllPhotos] = useState([])
-    ///const [localPhotos, setLocalPhotos] = useState(() => JSON.parse(localStorage.getItem("localPhotos")) || []) 
-    const [allPhotoRandom, setAllPhotoRandom] = useState([])
-    const [isRandom, setIsRandom] = useState(true)
-    const [cartItems, setCartItems] = useState(() => JSON.parse(localStorage.getItem("cartItems")) || [])
-    const [buttonText, setButtonText] = useState("Place Order")
-    const [isCartEmpty, setIsCartEmpty] = useState(true)
-    
-    const url = "https://raw.githubusercontent.com/Qinisfighting/picpick/master/src/photosDataFixed.json"
-    const urlRandom = "https://raw.githubusercontent.com/Qinisfighting/picpick/master/src/photosDataRandom.json"
-    useEffect(() => {
-        fetch(url)  //
-            .then(res => res.json())
-            .then(data => setAllPhotos(data))     
-    }, [])
+function ContextProvider({ children }) {
+	//  {children} is destructuring of props
+	const [allPhotos, setAllPhotos] = useState([]);
+	//const [localPhotos, setLocalPhotos] = useState(() => JSON.parse(localStorage.getItem("localPhotos")) || [])
+	const [allPhotoRandom, setAllPhotoRandom] = useState([]);
+	const [isRandom, setIsRandom] = useState(true);
+	const [cartItems, setCartItems] = useState(
+		() => JSON.parse(localStorage.getItem("cartItems")) || []
+	);
+	const [buttonText, setButtonText] = useState("Place Order");
 
-    useEffect(() => {
-        fetch(urlRandom)  //
-            .then(res => res.json())
-            .then(data =>setAllPhotoRandom(data))
-    }, [allPhotoRandom])
-    
- 
-  useEffect(() => {
-    localStorage.setItem("cartItems", JSON.stringify(cartItems))
-}, [cartItems])
+	const url =
+		"https://raw.githubusercontent.com/Qinisfighting/picpick/master/src/photosDataFixed.json";
+	const urlRandom =
+		"https://raw.githubusercontent.com/Qinisfighting/picpick/master/src/photosDataRandom.json";
+	useEffect(() => {
+		fetch(url) //
+			.then((res) => res.json())
+			.then((data) => setAllPhotos(data));
+	}, []);
 
-useEffect(() => {
-    localStorage.setItem("localPhotos", JSON.stringify(allPhotos))  
-}, [allPhotos])
+	useEffect(() => {
+		fetch(urlRandom) //
+			.then((res) => res.json())
+			.then((data) => setAllPhotoRandom(data));
+	}, [allPhotoRandom]);
 
-    function toggleFav(id) {
-        const updatedArr = allPhotos.map(photo => {
-         return id===photo.id?
-                {...photo,
-                isFavorite: !photo.isFavorite }
-                :photo
-        })
-          
-        setAllPhotos(updatedArr)   
-        
-    }
+	useEffect(() => {
+		localStorage.setItem("cartItems", JSON.stringify(cartItems));
+	}, [cartItems]);
 
-    function setPhotoRandom(id){
-        const updatedArr = allPhotoRandom.map(photo =>{
-                       return id === photo.id && photo              
-           })        
-           setAllPhotoRandom(updatedArr)
-           setIsRandom(false)
-          
-       }
+	useEffect(() => {
+		localStorage.setItem("localPhotos", JSON.stringify(allPhotos));
+	}, [allPhotos]);
 
-       function addToCart(newItem) {
-        setCartItems(prevItems => [...prevItems, newItem])
-        setIsCartEmpty(false)
-    }
+	function toggleFav(id) {
+		const updatedArr = allPhotos.map((photo) => {
+			return id === photo.id ? { ...photo, isFavorite: !photo.isFavorite } : photo;
+		});
 
-    function removeFromCart(id) {
-        setCartItems(prevItems => prevItems.filter(item => item.id !== id))
-    }
+		setAllPhotos(updatedArr);
+	}
 
-    function placeOrder() {
+	function setPhotoRandom(id) {
+		const updatedArr = allPhotoRandom.map((photo) => {
+			return id === photo.id && photo;
+		});
+		setAllPhotoRandom(updatedArr);
+		setIsRandom(false);
+	}
 
-        setButtonText('Ordering...')
-        setTimeout(() => { 
-        localStorage.removeItem("cartItems")
-        window.location.reload(true)   
-        alert('Your order is successful!')
-        setButtonText('Place Order')
-        setIsCartEmpty(true)
+	function addToCart(newItem) {
+		setCartItems((prevItems) => [...prevItems, newItem]);
+	}
 
-    },3000)
-      }
-  
+	function removeFromCart(id) {
+		setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
+	}
 
-    return (
-        <Context.Provider value={{allPhotos,
-                                  toggleFav, 
-                                  allPhotoRandom, 
-                                  setPhotoRandom, 
-                                  isRandom, 
-                                  setIsRandom, 
-                                  addToCart, 
-                                  cartItems,
-                                  removeFromCart,
-                                  placeOrder,
-                                  buttonText,
-                                  setButtonText,
-                                  isCartEmpty
-                                  }}> {/* shorthand for allPhotos:allPhotos */}
-            {children}
-        </Context.Provider>
-    )
-    
+	function placeOrder() {
+		setButtonText("Ordering...");
+		setTimeout(() => {
+			localStorage.removeItem("cartItems");
+			alert("Your order is successful!");
+			window.location.reload(true);
+			setButtonText("Place Order");
+		}, 3000);
+	}
+
+	return (
+		<Context.Provider
+			value={{
+				allPhotos,
+				toggleFav,
+				allPhotoRandom,
+				setPhotoRandom,
+				isRandom,
+				setIsRandom,
+				addToCart,
+				cartItems,
+				removeFromCart,
+				placeOrder,
+				buttonText,
+				setButtonText
+			}}
+		>
+			{/* shorthand for allPhotos:allPhotos */}
+			{children}
+		</Context.Provider>
+	);
 }
 
-export {ContextProvider, Context}
+export { ContextProvider, Context };
