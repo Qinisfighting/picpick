@@ -74,4 +74,5 @@ main {
 .counter--count {
 	color: #5a5a5a;
 	margin: 0 5px;
+	padding: 0 5px;
 }

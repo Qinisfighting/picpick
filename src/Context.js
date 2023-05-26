@@ -12,6 +12,8 @@ function ContextProvider({ children }) {
 		() => JSON.parse(localStorage.getItem("cartItems")) || []
 	);
 	const [buttonText, setButtonText] = useState("Place Order");
+	const [count, setCount] = useState(1);   
+	
 
 	const url =
 		"https://raw.githubusercontent.com/Qinisfighting/picpick/master/src/photosDataFixed.json";
@@ -71,6 +73,36 @@ function ContextProvider({ children }) {
 		}, 3000);
 	}
 
+
+	function counter(){
+ 
+		
+		const handleClickMinus = () => {
+			count > 1 && setCount(prev => prev - 1);
+		 }
+		 const  handleClickPlus = () => {
+		   setCount(prev => prev + 1);
+		 }
+	   
+	
+		
+		 return (
+		   <div className="counter" style = {{border: 2}}>
+			 <button className="counter--minus" onClick={handleClickMinus}>
+			   -
+			 </button>
+				 
+				<span className="counter--count"  >{count}</span>
+				
+			 <button className="counter--plus" onClick={handleClickPlus}>
+			   +
+			 </button>
+		   </div>
+		 );
+	   
+	   }
+	
+
 	return (
 		<Context.Provider
 			value={{
@@ -85,7 +117,9 @@ function ContextProvider({ children }) {
 				removeFromCart,
 				placeOrder,
 				buttonText,
-				setButtonText
+				setButtonText,
+				counter,
+				count
 			}}
 		>
 			{/* shorthand for allPhotos:allPhotos */}

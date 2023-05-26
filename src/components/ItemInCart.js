@@ -5,11 +5,9 @@ import PropTypes from 'prop-types';
 import trash_bin from '../assets/trash_bin.png'
 
 
-
 export default function ItemInCart({img}) {  //mean shit! forget {} for img and debugged for 2 hours...
     const [hovered, setHovered] = useState(false) 
-    const [count, setCount] = useState(0);   
-    const {removeFromCart} = useContext(Context)
+    const {removeFromCart, counter, count} = useContext(Context)
 
     const handleMouseEnter = () => {
         setHovered(true);
@@ -17,34 +15,6 @@ export default function ItemInCart({img}) {  //mean shit! forget {} for img and 
      const handleMouseLeave = () => {
         setHovered(false);
      };
-
-     function Counter(){
-       
-      function handleClickMinus() {
-         setCount(prev => prev - 1);
-       }
-       function handleClickPlus() {
-         setCount(prev => prev + 1);
-       }
-     
-
-      
-       return (
-         <div className="counter" >
-           <button className="counter--minus" onClick={handleClickMinus}>
-             -
-           </button>
-               
-              <h4 className="counter--count">{count}</h4>
-              
-           <button className="counter--plus" onClick={handleClickPlus}>
-             +
-           </button>
-         </div>
-       );
-     
-     }
-
 
      const itemStyle = {
         marginLeft: 0,
@@ -84,6 +54,11 @@ export default function ItemInCart({img}) {  //mean shit! forget {} for img and 
         color:'#403f3f'
 
      }
+  const itemTotalPrice = count*1.99
+  const itemTotalPriceDisplay = itemTotalPrice.toLocaleString("de-DE", {
+   style: "currency",
+   currency: "EUR"
+});
 
   return (
     <div style = {itemStyle} onMouseEnter={handleMouseEnter}
@@ -91,8 +66,8 @@ export default function ItemInCart({img}) {  //mean shit! forget {} for img and 
       
        <img alt='img' src={img.url} style={imageStyle}/>   
        
-       <h4 style={priceStyle}>1,99 €</h4>
-       <Counter />
+       <h4 style={priceStyle}>{itemTotalPriceDisplay}</h4>
+       {counter()}
        <img src={trash_bin} alt='trash_bin' style={trashBinStyle} onClick={() => removeFromCart(img.id)}></img>
    </div>  
   )

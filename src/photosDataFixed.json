@@ -2,152 +2,182 @@
     {
         "url": "https://picsum.photos/id/22/800/800",
         "id": "1",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/21/800/800",
         "id": "2",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/23/800/800",
         "id": "3",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/32/800/800",
         "id": "4",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/43/800/800",
         "id": "5",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/45/800/800",
         "id": "6",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/57/800/800",
         "id": "7",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/65/800/800",
         "id": "8",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/76/800/800",
         "id": "9",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/82/800/800",
         "id": "10",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/84/800/800",
         "id": "11",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/88/800/800",
         "id": "12",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/91/800/800",
         "id": "13",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/102/800/800",
         "id": "14",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/124/800/800",
         "id": "15",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/133/800/800",
         "id": "16",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/143/800/800",
         "id": "17",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/146/800/800",
         "id": "18",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/152/800/800",
         "id": "19",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/175/800/800",
         "id": "20",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/219/800/800",
         "id": "21",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/1/800/800",
         "id": "22",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     
     {
         "url": "https://picsum.photos/id/228/800/800",
         "id": "23",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/258/800/800",
         "id": "24",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/272/800/800",
         "id": "25",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/291/800/800",
         "id": "26",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/322/800/800",
         "id": "27",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/336/800/800",
         "id": "28",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/373/800/800",
         "id": "29",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     },
     {
         "url": "https://picsum.photos/id/376/800/800",
         "id": "30",
-        "isFavorite": false
+        "isFavorite": false,
+        "quantity": 1
     }
 ]
