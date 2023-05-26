@@ -55,7 +55,9 @@ export default function Cart(img) {
     style: "currency",
     currency: "EUR"
   });
-  const ItemsNumber = cartItems.length;
+  const ItemsNumber = cartItems
+    .map((item) => item.quantity)
+    .reduce((a, b) => a + b, 0);
 
   return (
     <main className="cart-page" style={cartElementsStyle}>
