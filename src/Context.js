@@ -14,7 +14,7 @@ function ContextProvider({ children }) {
 	const [buttonText, setButtonText] = useState("Place Order");
 	const [count, setCount] = useState(1);   
 	
-
+    //the json is local but i put online anyway in case somebody else need it. 
 	const url =
 		"https://raw.githubusercontent.com/Qinisfighting/picpick/master/src/photosDataFixed.json";
 	const urlRandom =
@@ -35,10 +35,14 @@ function ContextProvider({ children }) {
 		localStorage.setItem("cartItems", JSON.stringify(cartItems));
 	}, [cartItems]);
 
+/*
+    tried to save favourite status locally but ended up with bugs which i couldn't fix, those who can do it, fork and help!
+
 	useEffect(() => {
 		localStorage.setItem("localPhotos", JSON.stringify(allPhotos));
 	}, [allPhotos]);
 
+*/
 	function toggleFav(id) {
 		const updatedArr = allPhotos.map((photo) => {
 			return id === photo.id ? { ...photo, isFavorite: !photo.isFavorite } : photo;
@@ -46,6 +50,8 @@ function ContextProvider({ children }) {
 
 		setAllPhotos(updatedArr);
 	}
+
+ 
 
 	function setPhotoRandom(id) {
 		const updatedArr = allPhotoRandom.map((photo) => {
@@ -74,29 +80,51 @@ function ContextProvider({ children }) {
 	}
 
 
-	function counter(){
- 
-		
-		const handleClickMinus = () => {
-			count > 1 && setCount(prev => prev - 1);
-		 }
-		 const  handleClickPlus = () => {
-		   setCount(prev => prev + 1);
-		 }
-	   
+	function counter(id, quantity){
+
+		const itemTotalPrice = quantity*1.99
+		const itemTotalPriceDisplay = itemTotalPrice.toLocaleString("de-DE", {
+		 style: "currency",
+		 currency: "EUR"
+	  });
+
+		function addQuantity() {
+			const newArr = cartItems.map((item, i) => {
+				return id === item.id ? {...item, quantity: item.quantity + 1} : item;
+			})
+			setCartItems(newArr)
+			setCount(quantity)
+		}
 	
+		function reduceQuantity() {
+			const newArr = cartItems.map((item, i) => {
+				return id === item.id && item.quantity > 1 ? {...item, quantity: item.quantity - 1} : item;
+			})
+			setCartItems(newArr)
+			setCount(quantity)
+		}
+ 
+	
+		const priceStyle = {
+			right:20,
+			top:0,
+			position:'absolute',
+			color:'#403f3f'
+	
+		 }
 		
 		 return (
-		   <div className="counter" style = {{border: 2}}>
-			 <button className="counter--minus" onClick={handleClickMinus}>
+		   <div className="counter" >
+			 <button className="counter--minus" onClick={() => {reduceQuantity()}}>
 			   -
 			 </button>
 				 
-				<span className="counter--count"  >{count}</span>
+				<span className="counter--count"  >{quantity}</span>
 				
-			 <button className="counter--plus" onClick={handleClickPlus}>
+			 <button className="counter--plus" onClick={() => {addQuantity()}}>
 			   +
 			 </button>
+			 <h4 style={priceStyle}>{itemTotalPriceDisplay}</h4>
 		   </div>
 		 );
 	   

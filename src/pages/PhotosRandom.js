@@ -38,7 +38,7 @@ export default function PhotoRandom() {
 	}
 
 	function reloadClick() {
-		//setIsRandom(false)
+		//it would be better if here only this route rerenders, tried enough but :-( ...
 		window.location.reload();
 	}
 
