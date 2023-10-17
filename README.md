@@ -2,7 +2,7 @@
 PicPick
 ## Overview
 Order Picture Prints Online
-## View project [here](https://github.com/Qinisfighting/picpick)
+## View project [here](https://qinspickpic.netlify.app/)
 ## Environment
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ## Build tools
