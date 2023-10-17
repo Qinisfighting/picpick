@@ -2,7 +2,7 @@
 PicPick
 ## Overview
 Order Picture Prints Online
-## View project [here](https://picpick.herokuapp.com/)
+## View project [here](https://github.com/Qinisfighting/picpick)
 ## Environment
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ## Build tools
