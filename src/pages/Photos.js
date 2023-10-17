@@ -4,7 +4,7 @@ import { Context } from "../Context";
 import { Link } from "react-router-dom";
 
 export default function Photos() {
-	const { allPhotos, setPhotoRandom } = useContext(Context);
+	const { allPhotos, setPhotoRandom, localPhotos} = useContext(Context);
 
 	function getClass(i) {
 		if (i % 5 === 0) {
@@ -14,7 +14,10 @@ export default function Photos() {
 		}
 	}
 
-	const imageElements = allPhotos.map((img, i) => (
+	//after the first time toogle is clicked, localPhotos is setup in localsStorage, then render from localPhotos, or else, render from allPhotos
+	const imageElements = localPhotos ? localPhotos.map((img, i) => (
+		<Image key={img.id} img={img} className={getClass(i)} />
+	)) : allPhotos.map((img, i) => (
 		<Image key={img.id} img={img} className={getClass(i)} />
 	));
 

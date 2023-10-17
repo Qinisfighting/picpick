@@ -5,7 +5,7 @@ const Context = React.createContext();
 function ContextProvider({ children }) {
 	//  {children} is destructuring of props
 	const [allPhotos, setAllPhotos] = useState([]);
-	//const [localPhotos, setLocalPhotos] = useState(() => JSON.parse(localStorage.getItem("localPhotos")) || [])
+	const [localPhotos, setLocalPhotos] = useState(() => JSON.parse(localStorage.getItem("localPhotos")))  
 	const [allPhotoRandom, setAllPhotoRandom] = useState([]);
 	const [isRandom, setIsRandom] = useState(true);
 	const [cartItems, setCartItems] = useState(
@@ -35,20 +35,14 @@ function ContextProvider({ children }) {
 		localStorage.setItem("cartItems", JSON.stringify(cartItems));
 	}, [cartItems]);
 
-/*
-    tried to save favourite status locally but ended up with bugs which i couldn't fix, those who can do it, fork and help!
 
-	useEffect(() => {
-		localStorage.setItem("localPhotos", JSON.stringify(allPhotos));
-	}, [allPhotos]);
-
-*/
 	function toggleFav(id) {
 		const updatedArr = allPhotos.map((photo) => {
 			return id === photo.id ? { ...photo, isFavorite: !photo.isFavorite } : photo;
 		});
 
 		setAllPhotos(updatedArr);
+		setLocalPhotos(() => {localStorage.setItem("localPhotos", JSON.stringify(updatedArr))}) //save a copy of allPhotos locally to store the favorite boolean change
 	}
 
  
@@ -135,6 +129,7 @@ function ContextProvider({ children }) {
 		<Context.Provider
 			value={{
 				allPhotos,
+				localPhotos,
 				toggleFav,
 				allPhotoRandom,
 				setPhotoRandom,
