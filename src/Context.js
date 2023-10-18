@@ -37,7 +37,8 @@ function ContextProvider({ children }) {
 
 
 	function toggleFav(id) {
-		const updatedArr = allPhotos.map((photo) => {
+		const photosToRender = localPhotos ? localPhotos: allPhotos
+		const updatedArr = photosToRender.map((photo) => {
 			return id === photo.id ? { ...photo, isFavorite: !photo.isFavorite } : photo;
 		});
 

@@ -15,11 +15,10 @@ export default function Photos() {
 	}
 
 	//after the first time toogle is clicked, localPhotos is setup in localsStorage, then render from localPhotos, or else, render from allPhotos
-	const imageElements = localPhotos ? localPhotos.map((img, i) => (
+	const photosToRender = localPhotos ? localPhotos: allPhotos
+	const imageElements = photosToRender.map((img, i) => (
 		<Image key={img.id} img={img} className={getClass(i)} />
-	)) : allPhotos.map((img, i) => (
-		<Image key={img.id} img={img} className={getClass(i)} />
-	));
+	)) 
 
 	const randomBTN = {
 		float: "left",
